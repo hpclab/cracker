@@ -1,0 +1,9 @@
+
+dataset /path/to/dataset
+
+jarPath /path/to/jar/cracker.jar
+
+sparkPartition 64
+sparkMaster spark://sparkMasterIp:7077
+printMessageStat false
+edgelistSeparator \t
