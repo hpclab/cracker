@@ -13,23 +13,13 @@ class CCUtil(property : CCPropertiesImmutable) extends Serializable {
 	def getSparkContext() : SparkContext =
 		{
 			val conf = new SparkConf()
-//				.setMaster("mesos://146.48.82.30:5050")
 				.setMaster(property.sparkMaster)
 				.setAppName(property.appName)
-//				.set("spark.executor.uri", "http://conero.isti.cnr.it/spark-dist/spark-1.0.1.tgz")
-//				.setSparkHome("/home/lulli/spark")
 				.set("spark.executor.memory", property.sparkExecutorMemory)
 				.set("spark.storage.blockManagerSlaveTimeoutMs", property.sparkBlockManagerSlaveTimeoutMs)
-//				.set("spark.task.cpus", "8")
-//				.set("spark.cores.max", "8")
-//				.set("mesos.native.library", "/usr/local/lib/libmesos.so")
-//				.setExecutorEnv("MESOS_NATIVE_LIBRARY", "/usr/local/lib/libmesos.so")
-//				.setExecutorEnv("SPARK_EXECUTOR_URI", "http://conero.isti.cnr.it/spark-dist/spark-1.0.1.tgz")
-//				.setJars(Array("/home/lulli/tmp/cracker_conero/pegasus.jar"))
 				.setJars(Array(property.jarPath))
 			val spark = new SparkContext(conf)
 
-//			val spark = new SparkContext("local[2]", "MyProva")
 			spark.setCheckpointDir(".")
 
 			spark
