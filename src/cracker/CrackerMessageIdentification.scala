@@ -1,7 +1,7 @@
 package cracker
 
 @serializable
-class CrackerTreeMessageIdentification (val min: Long, val neigh: Set[Long]) 
+class CrackerTreeMessageIdentification (val min: Long, val neigh: Set[Long]) extends CrackerMessageSize
 {
 	def voteToHalt = neigh.isEmpty
 	

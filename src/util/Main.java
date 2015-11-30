@@ -19,6 +19,11 @@ public class Main
 				cracker.CrackerMainJava.main(argsParsed);
 				break;
 			}
+			case "CRACKERALL" :
+			{
+				crackerAllOptimizations.CrackerMainJava.main(argsParsed);
+				break;
+			}
 			case "CCF" : 
 			{
 				ccf.CcfMainJava.main(argsParsed);
@@ -27,11 +32,6 @@ public class Main
 			case "CCMR" : 
 			{
 				ccmr.CcmrMainJava.main(argsParsed);
-				break;
-			}
-			case "CCMRMEM" : 
-			{
-				ccmrmem.CcmrMainJava.main(argsParsed);
 				break;
 			}
 			case "PEGASUS" : 
@@ -44,14 +44,9 @@ public class Main
 				hashToMin.HashToMinMainJava.main(argsParsed);
 				break;
 			}
-			case "GRAPHXBUILTIN" : 
+			case "ALTERNATINGOPTIMIZED" :
 			{
-				graphXBuiltInCC.GraphXBuiltInCCJava.main(argsParsed);
-				break;
-			}
-			case "DIAMETER" : 
-			{
-				crackerDiameter.DiameterMainJava.main(argsParsed);
+				alternatingOptimized.AlternatingOptimizedMainJava.main(argsParsed);
 				break;
 			}
 			default : 
