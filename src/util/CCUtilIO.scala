@@ -32,6 +32,23 @@ class CCUtilIO(property : CCPropertiesImmutable) extends Serializable
 		
         printFile.close
     }
+
+    def printSimplification( step : Int, activeVertices : Long, initialVertices : Long , activeEdges : Double, degreeMax : Int) =
+    {
+        val printFile = new FileWriter( "simplification.txt", true )
+
+        val token : Array[Object] = Array(  property.dataset,
+                                            step.toString,
+                                            activeVertices.toString,
+                                            ((((activeVertices.toDouble * 100) / initialVertices)*100).round.toDouble / 100).toString,
+                                            property.algorithmName,
+                                            activeEdges.toString,
+                                            (activeEdges / activeVertices).toString,
+                                            degreeMax.toString)
+        printFile.write(token.mkString(",")+ "\n" )
+
+        printFile.close
+    }
 	
 	def printTimeStep( step : Int, time : Long) =
     {

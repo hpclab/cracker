@@ -5,9 +5,6 @@ import org.apache.spark.SparkContext
 import org.apache.spark.rdd.RDD
 import util.CCPropertiesImmutable
 import util.CCUtil
-import crackerDiameter.DiameterTreeMessageYellowPhase
-import crackerDiameter.DiameterTreeMessageBluePhase
-import crackerDiameter.DiameterTreeMessageRedPhase
 
 @serializable
 class CrackerStats(property : CCPropertiesImmutable, util : CCUtil, spark : SparkContext) {
@@ -27,39 +24,6 @@ class CrackerStats(property : CCPropertiesImmutable, util : CCUtil, spark : Spar
         if(property.printAll)
 		{
 			printGraph(util, step, "INPUT_BLUE", rdd)
-		}
-    }
-    
-    def printSimplificationDiameterYellow(step : Int, rdd : RDD[(Long, DiameterTreeMessageYellowPhase)]) =
-    {
-        if (property.printMessageStat) 
-        {
-        	if(rdd.count > 0)
-        		util.printSimplificationDiameter(step, rdd.count, rdd.map(t=> t._2.neigh.size.toLong).sum, rdd.map(t=> t._2.neigh.size).max)
-        	else
-        		util.printSimplificationDiameter(step, 0, 0, 0)
-		}
-    }
-    
-    def printSimplificationDiameterBlue(step : Int, rdd : RDD[(Long, DiameterTreeMessageBluePhase)]) =
-    {
-        if (property.printMessageStat) 
-        {
-        	if(rdd.count > 0)
-        		util.printSimplificationDiameter(step, rdd.count, rdd.map(t=> t._2.neigh.size.toLong).sum, rdd.map(t=> t._2.neigh.size).max)
-        	else
-        		util.printSimplificationDiameter(step, 0, 0, 0)
-		}
-    }
-    // do interface with Message having neigh map
-    def printSimplificationDiameterRed(step : Int, rdd : RDD[(Long, DiameterTreeMessageRedPhase)]) =
-    {
-        if (property.printMessageStat) 
-        {
-        	if(rdd.count > 0)
-        		util.printSimplificationDiameter(step, rdd.count, rdd.map(t=> t._2.neigh.size.toLong).sum, rdd.map(t=> t._2.neigh.size).max)
-        	else
-        		util.printSimplificationDiameter(step, 0, 0, 0)
 		}
     }
     

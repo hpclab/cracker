@@ -131,6 +131,11 @@ class CCUtil(property : CCPropertiesImmutable) extends Serializable {
     {
     	io.printSimplification(step, activeVertices, vertexNumber)
     }
+
+    def printSimplification( step : Int, activeVertices : Long , activeEdges : Double, degreeMax : Int) =
+    {
+    	io.printSimplification(step, activeVertices, vertexNumber, activeEdges, degreeMax)
+    }
     
     def printTimeStep( step : Int, time : Long) =
     {
@@ -143,7 +148,7 @@ class CCUtil(property : CCPropertiesImmutable) extends Serializable {
     	io.printMessageStep(step, messageNumber, messageSize)
     }
 	
-	def testEnded(rdd : RDD[(Long, Int)], step : Int, timeBegin : Long, timeEnd : Long, timeSparkLoaded : Long, timeDataLoaded : Long, reduceInputMessageNumber : Long, reduceInputSize : Long)  =
+	def testEnded(rdd : RDD[(Long, Int)], step : Int, timeBegin : Long, timeEnd : Long, timeSparkLoaded : Long, timeDataLoaded : Long, reduceInputMessageNumber : Long, reduceInputSize : Long, bitmask : String = "", optimization : String = "")  =
 	{
 		io.printTime( timeBegin, timeEnd, "all" )
         io.printTime( timeSparkLoaded, timeEnd, "allComputationAndLoadingGraph" )
@@ -171,7 +176,7 @@ class CCUtil(property : CCPropertiesImmutable) extends Serializable {
     		io.printCCDistribution(rdd)
 	}
 	
-	def testEnded(ccNumber : Long, ccNumberNoIsolatedVertices : Long, step : Int, timeBegin : Long, timeEnd : Long, timeSparkLoaded : Long, timeDataLoaded : Long, reduceInputMessageNumber : Long, reduceInputSize : Long)  =
+	/*def testEnded(ccNumber : Long, ccNumberNoIsolatedVertices : Long, step : Int, timeBegin : Long, timeEnd : Long, timeSparkLoaded : Long, timeDataLoaded : Long, reduceInputMessageNumber : Long, reduceInputSize : Long)  =
 	{
 		io.printTime( timeBegin, timeEnd, "all" )
         io.printTime( timeSparkLoaded, timeEnd, "allComputationAndLoadingGraph" )
@@ -194,5 +199,5 @@ class CCUtil(property : CCPropertiesImmutable) extends Serializable {
     						ccNumberNoIsolatedVertices,
     						0,
     						property.customColumnValue)
-	}
+	}*/
 }
