@@ -16,7 +16,8 @@ public class Main
 			{
 			case "CRACKER" : 
 			{
-				cracker.CrackerMainJava.main(argsParsed);
+//				cracker.CrackerMainJava.main(argsParsed);
+				crackerAllOptimizations.CrackerMainJava.main(argsParsed);
 				break;
 			}
 			case "CRACKERALL" :
