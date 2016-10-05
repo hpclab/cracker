@@ -1,7 +1,7 @@
 package cracker
 
 @serializable
-class CrackerTreeMessageTree (val parent : Long, val child : Set[Long]) 
+class CrackerTreeMessageTree (val parent : Long, val child : Set[Long]) extends CrackerMessageSize
 {
 	def getMessageSize = child.size + 1
 	
@@ -21,6 +21,18 @@ class CrackerTreeMessageTree (val parent : Long, val child : Set[Long])
 		{
 			Option.apply(CrackerTreeMessageTree.this)
 		}
+	}
+	
+	def merge(other : CrackerTreeMessageTree) : CrackerTreeMessageTree =
+	{
+		var parentNew = parent
+		
+		if(parentNew == -1)
+		{
+			parentNew = other.parent
+		}
+		
+		new CrackerTreeMessageTree(parentNew, child ++ other.child)
 	}
 	
 	def getMessagePropagation(id : Long) = 
