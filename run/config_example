@@ -1,10 +1,13 @@
 
-dataset dataset_example
+dataset run/dataset_example
+outputFile run/output
+printAll true
 
 edgelistSeparator \t
 
 jarPath cracker-0.0.1-SNAPSHOT.jar
 
-sparkPartition 64
-sparkMaster spark://<your spark master>:7077
+sparkPartition 2
+#sparkMaster spark://<your spark master>:7077
+sparkMaster local[2]
 printMessageStat false
