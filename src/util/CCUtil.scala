@@ -20,7 +20,7 @@ class CCUtil(property : CCPropertiesImmutable) extends Serializable {
 				.setJars(Array(property.jarPath))
 			val spark = new SparkContext(conf)
 
-//			spark.setCheckpointDir(".")
+			spark.setCheckpointDir(".")
 
 			spark
 		}
