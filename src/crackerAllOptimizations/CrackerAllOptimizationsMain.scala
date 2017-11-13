@@ -2,7 +2,6 @@ package crackerAllOptimizations
 
 import scala.Array.canBuildFrom
 import org.apache.spark.SparkContext
-import org.apache.spark.SparkContext.rddToPairRDDFunctions
 import org.apache.spark.rdd.RDD
 import cracker._
 import util.CCProperties
