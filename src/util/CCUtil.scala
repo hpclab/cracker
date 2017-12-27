@@ -18,6 +18,14 @@ class CCUtil(property : CCPropertiesImmutable) extends Serializable {
 				.set("spark.executor.memory", property.sparkExecutorMemory)
 				.set("spark.storage.blockManagerSlaveTimeoutMs", property.sparkBlockManagerSlaveTimeoutMs)
 				.setJars(Array(property.jarPath))
+			if (property.sparkCoresMax > 0) {
+      conf.set("spark.cores.max", property.sparkCoresMax.toString)
+      val executorCore = property.sparkCoresMax / property.sparkExecutorInstances
+      conf.set("spark.executor.cores", executorCore.toString)
+    }
+    if (property.sparkExecutorInstances > 0)
+      conf.set("spark.executor.instances", property.sparkExecutorInstances.toString)
+			
 			val spark = new SparkContext(conf)
 
 			spark.setCheckpointDir(".")
